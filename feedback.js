@@ -32,6 +32,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Problem type radio functionality
+    const problemOptions = document.querySelectorAll('.problem-option');
+    let selectedProblemType = null;
+    
+    problemOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+            selectedProblemType = radio.value;
+            
+            // Update visual state
+            problemOptions.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+    
     // Category card functionality
     const categoryCards = document.querySelectorAll('.category-card');
     let selectedCategories = [];
@@ -52,257 +68,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Problem type radio functionality
-    const problemOptions = document.querySelectorAll('.problem-option');
-    let selectedProblemType = null;
-    
-    problemOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const radio = this.querySelector('input[type="radio"]');
-            radio.checked = true;
-            selectedProblemType = radio.value;
-            
-            // Update visual state
-            problemOptions.forEach(opt => opt.classList.remove('selected'));
-            this.classList.add('selected');
-        });
-    });
-    
-    // Form validation and submission
-    const feedbackSubmitBtn = document.querySelector('.feedback-submit');
-    const problemSubmitBtn = document.querySelector('.problem-submit');
-    
-    if (feedbackSubmitBtn) {
-        feedbackSubmitBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const commentText = document.querySelector('.comment-textarea').value.trim();
-            
-            // Basic validation
-            if (!selectedRating) {
-                alert('Veuillez sélectionner une évaluation de votre expérience.');
-                return;
-            }
-            
-            if (selectedCategories.length === 0) {
-                alert('Veuillez sélectionner au moins un domaine.');
-                return;
-            }
-            
-            // Collect feedback data
-            const feedbackData = {
-                type: 'feedback',
-                rating: selectedRating,
-                categories: selectedCategories,
-                comment: commentText,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Simulate form submission
-            console.log('Feedback submitted:', feedbackData);
-            
-            // Show success message
-            showSuccessMessage('Merci pour votre retour ! Votre avis a été envoyé avec succès.');
-            
-            // Reset form
-            resetFeedbackForm();
-        });
-    }
-    
-    if (problemSubmitBtn) {
-        problemSubmitBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const problemDescription = document.querySelector('.problem-textarea').value.trim();
-            const contactEmail = document.querySelector('.contact-input').value.trim();
-            
-            // Basic validation
-            if (!selectedProblemType) {
-                alert('Veuillez sélectionner un type de problème.');
-                return;
-            }
-            
-            if (selectedCategories.length === 0) {
-                alert('Veuillez sélectionner au moins un domaine.');
-                return;
-            }
-            
-            if (!problemDescription) {
-                alert('Veuillez décrire votre problème.');
-                return;
-            }
-            
-            // Email validation if provided
-            if (contactEmail && !isValidEmail(contactEmail)) {
-                alert('Veuillez entrer une adresse email valide.');
-                return;
-            }
-            
-            // Collect problem data
-            const problemData = {
-                type: 'problem',
-                problemType: selectedProblemType,
-                categories: selectedCategories,
-                description: problemDescription,
-                contactEmail: contactEmail,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Simulate form submission
-            console.log('Problem reported:', problemData);
-            
-            // Show success message
-            showSuccessMessage('Votre problème a été signalé avec succès ! Nous vous contacterons bientôt.');
-            
-            // Reset form
-            resetProblemForm();
-        });
-    }
-    
-    // Helper functions
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function showSuccessMessage(message) {
-        // Create success modal
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        `;
-        
-        const modalContent = document.createElement('div');
-        modalContent.style.cssText = `
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 400px;
-            margin: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        `;
-        
-        modalContent.innerHTML = `
-            <div style="font-size: 3rem; color: #4caf50; margin-bottom: 15px;">✅</div>
-            <h3 style="font-family: 'Manrope', sans-serif; color: #333; margin-bottom: 15px;">Succès !</h3>
-            <p style="font-family: 'Poppins', sans-serif; color: #666; margin-bottom: 20px;">${message}</p>
-            <button onclick="this.closest('.modal').remove()" style="
-                background: #4caf50;
-                color: white;
-                border: none;
-                padding: 12px 25px;
-                border-radius: 8px;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 500;
-                cursor: pointer;
-                transition: background 0.3s ease;
-            " onmouseover="this.style.background='#45a049'" onmouseout="this.style.background='#4caf50'">
-                Fermer
-            </button>
-        `;
-        
-        modal.className = 'modal';
-        modal.appendChild(modalContent);
-        document.body.appendChild(modal);
-        
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-    }
-    
-    function resetFeedbackForm() {
-        // Reset rating selection
-        ratingCards.forEach(card => card.classList.remove('selected'));
-        selectedRating = null;
-        
-        // Reset category selection
-        categoryCards.forEach(card => card.classList.remove('selected'));
-        selectedCategories = [];
-        
-        // Reset comment textarea
-        document.querySelector('.comment-textarea').value = '';
-    }
-    
-    function resetProblemForm() {
-        // Reset problem type selection
-        problemOptions.forEach(option => {
-            option.classList.remove('selected');
-            option.querySelector('input[type="radio"]').checked = false;
-        });
-        selectedProblemType = null;
-        
-        // Reset category selection
-        categoryCards.forEach(card => card.classList.remove('selected'));
-        selectedCategories = [];
-        
-        // Reset form fields
-        document.querySelector('.problem-textarea').value = '';
-        document.querySelector('.contact-input').value = '';
-    }
-    
-    // Add smooth scrolling for better UX
-    function smoothScroll(element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-    
-    // Add keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            // Close any open modals
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => modal.remove());
-        }
-    });
-    
-    // Add loading state to submit buttons
-    function setLoadingState(button, isLoading) {
-        if (isLoading) {
-            button.disabled = true;
-            button.style.opacity = '0.7';
-            button.innerHTML = '<span>Envoi en cours...</span>';
-        } else {
-            button.disabled = false;
-            button.style.opacity = '1';
-            // Restore original text based on button type
-            if (button.classList.contains('feedback-submit')) {
-                button.innerHTML = 'Envoyer le Feedback';
-            } else {
-                button.innerHTML = 'Signaler le Problème';
-            }
-        }
-    }
-    
-    // Add input validation feedback
+    // Character count functionality
     const textareas = document.querySelectorAll('textarea');
-    const inputs = document.querySelectorAll('input[type="email"]');
-    
     textareas.forEach(textarea => {
-        textarea.addEventListener('input', function() {
-            if (this.value.trim().length > 0) {
-                this.style.borderColor = '#4caf50';
+        const maxLength = 500;
+        const counter = textarea.parentNode.querySelector('.character-count');
+        
+        function updateCounter() {
+            const length = textarea.value.length;
+            counter.textContent = `${length}/${maxLength} caractères`;
+            
+            if (length > maxLength * 0.9) {
+                counter.style.color = '#f44336';
+            } else if (length > maxLength * 0.7) {
+                counter.style.color = '#ff9800';
             } else {
-                this.style.borderColor = '#e0e0e0';
+                counter.style.color = '#666';
             }
-        });
+        }
+        
+        textarea.addEventListener('input', updateCounter);
+        textarea.setAttribute('maxlength', maxLength);
+        updateCounter();
     });
     
-    inputs.forEach(input => {
+    // Input validation
+    const emailInputs = document.querySelectorAll('input[type="email"]');
+    const ninInputs = document.querySelectorAll('input[type="text"]');
+    
+    emailInputs.forEach(input => {
         input.addEventListener('input', function() {
             if (this.value.trim().length > 0) {
                 if (isValidEmail(this.value)) {
@@ -316,35 +110,263 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add character count for textareas
-    textareas.forEach(textarea => {
-        const maxLength = 500;
-        const counter = document.createElement('div');
-        counter.style.cssText = `
-            text-align: right;
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 5px;
+    ninInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            // Remove non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            if (this.value.length > 0) {
+                this.style.borderColor = '#4caf50';
+            } else {
+                this.style.borderColor = '#e0e0e0';
+            }
+        });
+    });
+    
+    // Form validation and submission
+    const feedbackSubmitBtn = document.querySelector('.feedback-submit');
+    const problemSubmitBtn = document.querySelector('.problem-submit');
+    
+    if (feedbackSubmitBtn) {
+        feedbackSubmitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const commentText = document.querySelector('.comment-textarea').value.trim();
+            const email = document.querySelector('#feedback-email').value.trim();
+            const nin = document.querySelector('#feedback-nin').value.trim();
+            
+            // Basic validation
+            if (!selectedRating) {
+                showAlert('Veuillez sélectionner une évaluation de votre expérience.', 'warning');
+                return;
+            }
+            
+            // Email validation if provided
+            if (email && !isValidEmail(email)) {
+                showAlert('Veuillez entrer une adresse email valide.', 'error');
+                return;
+            }
+            
+            // NIN validation if provided
+            if (nin && nin.length < 10) {
+                showAlert('Le NIN doit contenir au moins 10 chiffres.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            setLoadingState(this, true);
+            
+            // Collect feedback data
+            const feedbackData = {
+                type: 'feedback',
+                rating: selectedRating,
+                comment: commentText,
+                email: email,
+                nin: nin,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simulate form submission
+            setTimeout(() => {
+                console.log('Feedback submitted:', feedbackData);
+                setLoadingState(this, false);
+                showSuccessModal('Merci pour votre retour ! Votre avis a été envoyé avec succès. Nous apprécions votre contribution pour améliorer nos services.');
+                resetFeedbackForm();
+            }, 2000);
+        });
+    }
+    
+    if (problemSubmitBtn) {
+        problemSubmitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const problemDescription = document.querySelector('.problem-textarea').value.trim();
+            const email = document.querySelector('#problem-email').value.trim();
+            const nin = document.querySelector('#problem-nin').value.trim();
+            
+            // Basic validation
+            if (!selectedProblemType) {
+                showAlert('Veuillez sélectionner un type de problème.', 'warning');
+                return;
+            }
+            
+            if (!problemDescription) {
+                showAlert('Veuillez décrire votre problème.', 'error');
+                return;
+            }
+            
+            if (problemDescription.length < 20) {
+                showAlert('Veuillez fournir une description plus détaillée (au moins 20 caractères).', 'warning');
+                return;
+            }
+            
+            // Email validation if provided
+            if (email && !isValidEmail(email)) {
+                showAlert('Veuillez entrer une adresse email valide.', 'error');
+                return;
+            }
+            
+            // NIN validation if provided
+            if (nin && nin.length < 10) {
+                showAlert('Le NIN doit contenir au moins 10 chiffres.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            setLoadingState(this, true);
+            
+            // Collect problem data
+            const problemData = {
+                type: 'problem',
+                problemType: selectedProblemType,
+                description: problemDescription,
+                email: email,
+                nin: nin,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simulate form submission
+            setTimeout(() => {
+                console.log('Problem reported:', problemData);
+                setLoadingState(this, false);
+                showSuccessModal('Votre problème a été signalé avec succès ! Notre équipe technique va examiner votre rapport et vous contacter si nécessaire.');
+                resetProblemForm();
+            }, 2000);
+        });
+    }
+    
+    // Helper functions
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function showAlert(message, type = 'info') {
+        // Create alert element
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type}`;
+        alert.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
             font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            z-index: 1001;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideInRight 0.3s ease-out;
         `;
         
-        textarea.parentNode.appendChild(counter);
-        
-        function updateCounter() {
-            const remaining = maxLength - textarea.value.length;
-            counter.textContent = `${textarea.value.length}/${maxLength} caractères`;
-            
-            if (remaining < 50) {
-                counter.style.color = '#f44336';
-            } else if (remaining < 100) {
-                counter.style.color = '#ff9800';
-            } else {
-                counter.style.color = '#666';
-            }
+        // Set background color based on type
+        switch(type) {
+            case 'error':
+                alert.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+                break;
+            case 'warning':
+                alert.style.background = 'linear-gradient(135deg, #ff9800, #f57c00)';
+                break;
+            case 'success':
+                alert.style.background = 'linear-gradient(135deg, #4caf50, #2e7d32)';
+                break;
+            default:
+                alert.style.background = 'linear-gradient(135deg, #2196f3, #1976d2)';
         }
         
-        textarea.addEventListener('input', updateCounter);
-        textarea.setAttribute('maxlength', maxLength);
-        updateCounter();
+        alert.textContent = message;
+        document.body.appendChild(alert);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            alert.style.animation = 'slideOutRight 0.3s ease-in';
+            setTimeout(() => alert.remove(), 300);
+        }, 5000);
+    }
+    
+    function showSuccessModal(message) {
+        const modal = document.getElementById('success-modal');
+        const modalMessage = modal.querySelector('.modal-message');
+        modalMessage.textContent = message;
+        modal.style.display = 'flex';
+    }
+    
+    function setLoadingState(button, isLoading) {
+        const btnText = button.querySelector('.btn-text');
+        const spinner = button.querySelector('.loading-spinner');
+        
+        if (isLoading) {
+            button.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+        } else {
+            button.disabled = false;
+            btnText.style.display = 'block';
+            spinner.style.display = 'none';
+        }
+    }
+    
+    function resetFeedbackForm() {
+        // Reset rating selection
+        ratingCards.forEach(card => card.classList.remove('selected'));
+        selectedRating = null;
+        
+        // Reset form fields
+        document.querySelector('.comment-textarea').value = '';
+        document.querySelector('#feedback-email').value = '';
+        document.querySelector('#feedback-nin').value = '';
+        
+        // Reset input styles
+        document.querySelectorAll('.contact-input').forEach(input => {
+            input.style.borderColor = '#e0e0e0';
+        });
+    }
+    
+    function resetProblemForm() {
+        // Reset problem type selection
+        problemOptions.forEach(option => {
+            option.classList.remove('selected');
+            option.querySelector('input[type="radio"]').checked = false;
+        });
+        selectedProblemType = null;
+        
+        // Reset form fields
+        document.querySelector('.problem-textarea').value = '';
+        document.querySelector('#problem-email').value = '';
+        document.querySelector('#problem-nin').value = '';
+        
+        // Reset input styles
+        document.querySelectorAll('.contact-input').forEach(input => {
+            input.style.borderColor = '#e0e0e0';
+        });
+    }
+    
+    // Keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
     });
+    
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
 });
+
+// Global function to close modal
+function closeModal() {
+    const modal = document.getElementById('success-modal');
+    modal.style.display = 'none';
+}

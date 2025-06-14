@@ -31,206 +31,221 @@
 
     <main class="main-content">
         <div class="feedback-container">
-            <!-- Header Section -->
-            <div class="feedback-header">
-                <h1 class="main-title">Partagez Votre Expérience</h1>
-                <p class="subtitle">Que souhaitez-vous faire ?</p>
-            </div>
+      <!-- Feedback Header -->
+<div class="feedback-header">
+    <h1 class="main-title">Share Your Experience</h1>
+    <p class="subtitle">Your opinion matters to us</p>
+</div>
 
-            <!-- Tab Selection -->
-            <div class="tab-selection">
-                <button class="tab-btn active" data-tab="feedback">
-                    <div class="tab-icon feedback-icon">📝</div>
-                    <span>Donner un Avis</span>
-                </button>
-                <button class="tab-btn" data-tab="problem">
-                    <div class="tab-icon problem-icon">⚠️</div>
-                    <span>Signaler un Problème</span>
-                </button>
-            </div>
+<!-- Tab Selection -->
+<div class="tab-selection">
+    <button class="tab-btn active" data-tab="feedback">
+        <div class="tab-icon feedback-icon">
+            <img src="images/feedback.png" alt="Feedback" />
+        </div>
+        <span>Give Feedback</span>
+    </button>
+    <button class="tab-btn" data-tab="problem">
+        <div class="tab-icon problem-icon">
+            <img src="images/problem.png" alt="Problem" />
+        </div>
+        <span>Report a Problem</span>
+    </button>
+</div>
 
-            <!-- Feedback Content -->
-            <div class="tab-content active" id="feedback-content">
-                <!-- Experience Rating -->
-                <div class="rating-section">
-                    <h3>Votre Expérience</h3>
-                    <div class="rating-options">
-                        <div class="rating-card" data-rating="excellent">
-                            <div class="rating-emoji">😄</div>
-                            <span>Excellent</span>
-                        </div>
-                        <div class="rating-card" data-rating="good">
-                            <div class="rating-emoji">😊</div>
-                            <span>Bon</span>
-                        </div>
-                        <div class="rating-card" data-rating="average">
-                            <div class="rating-emoji">😐</div>
-                            <span>Moyen</span>
-                        </div>
-                        <div class="rating-card" data-rating="poor">
-                            <div class="rating-emoji">😞</div>
-                            <span>Mauvais</span>
-                        </div>
+<!-- Feedback Content -->
+<div class="tab-content active" id="feedback-content">
+    <div class="rating-section">
+        <h3>How would you rate your overall experience?</h3>
+        <div class="rating-options">
+            <div class="rating-card" data-rating="excellent">
+                <div class="rating-emoji">😄</div>
+                <span>Excellent</span>
+            </div>
+            <div class="rating-card" data-rating="good">
+                <div class="rating-emoji">😊</div>
+                <span>Good</span>
+            </div>
+            <div class="rating-card" data-rating="average">
+                <div class="rating-emoji">😐</div>
+                <span>Average</span>
+            </div>
+            <div class="rating-card" data-rating="poor">
+                <div class="rating-emoji">😞</div>
+                <span>Poor</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-section">
+        <h3>Share your comments or suggestions</h3>
+        <textarea placeholder="Describe your experience, improvement suggestions..." class="comment-textarea"></textarea>
+        <div class="character-count">0/500 characters</div>
+    </div>
+
+    <div class="contact-section">
+        <h3>Contact Information <span class="optional-label">(Optional)</span></h3>
+        <div class="contact-grid">
+            <div class="input-group">
+                <label for="feedback-email">Email</label>
+                <input type="email" id="feedback-email" placeholder="your.email@example.com" class="contact-input">
+            </div>
+            <div class="input-group">
+                <label for="feedback-nin">NIN</label>
+                <input type="text" id="feedback-nin" placeholder="National Identification Number" class="contact-input" maxlength="18">
+            </div>
+        </div>
+    </div>
+
+    <button class="submit-btn feedback-submit">
+        <span class="btn-text">Submit Feedback</span>
+        <div class="loading-spinner" style="display: none;"></div>
+    </button>
+</div>
+
+<!-- Problem Content -->
+<div class="tab-content" id="problem-content">
+    <div class="problem-type-section">
+        <h3>What type of problem are you experiencing?</h3>
+        <div class="problem-options">
+            <label class="problem-option">
+                <input type="radio" name="problem-type" value="technique">
+                <span class="radio-custom"></span>
+                <div class="option-content">
+                    <div class="option-icon">
+                        <img src="images/technical.png" alt="Technical Problem" />
+                    </div>
+                    <div class="option-text">
+                        <span class="option-title">Technical Problem</span>
+                        <span class="option-desc">Bug, system error, malfunction</span>
                     </div>
                 </div>
-
-                <!-- Feedback Categories -->
-                <div class="categories-section">
-                    <h3>Dans quel domaine ?</h3>
-                    <div class="category-grid">
-                        <div class="category-card">
-                            <div class="category-icon green">🛒</div>
-                            <span>Service Client</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon green">🚚</div>
-                            <span>Livraison</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon orange">💰</div>
-                            <span>Paiement</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon red">🌐</div>
-                            <span>Site Web</span>
-                        </div>
+            </label>
+            <label class="problem-option">
+                <input type="radio" name="problem-type" value="service">
+                <span class="radio-custom"></span>
+                <div class="option-content">
+                    <div class="option-icon">
+                        <img src="images/service.png" alt="Service Problem" />
+                    </div>
+                    <div class="option-text">
+                        <span class="option-title">Service Problem</span>
+                        <span class="option-desc">Customer service, delivery, quality</span>
                     </div>
                 </div>
+            </label>
+        </div>
+    </div>
 
-                <!-- Additional Comments -->
-                <div class="comments-section">
-                    <h3>Avez-vous une remarque ?</h3>
-                    <textarea placeholder="Tapez votre commentaire ici..." class="comment-textarea"></textarea>
-                </div>
+    <div class="problem-description">
+        <h3>Describe your problem in detail <span class="required-label">*</span></h3>
+        <textarea placeholder="Describe the problem in detail, the steps leading up to it, and the impact..." class="problem-textarea" required></textarea>
+        <div class="character-count">0/500 characters</div>
+    </div>
 
-                <button class="submit-btn feedback-submit">Envoyer le Feedback</button>
+    <div class="contact-section">
+        <h3>Contact Information</h3>
+        <div class="contact-grid">
+            <div class="input-group">
+                <label for="problem-email">Email <span class="optional-label">(Optional)</span></label>
+                <input type="email" id="problem-email" placeholder="your.email@example.com" class="contact-input">
             </div>
-
-            <!-- Problem Content -->
-            <div class="tab-content" id="problem-content">
-                <!-- Problem Type Selection -->
-                <div class="problem-type-section">
-                    <h3>Type de Problème</h3>
-                    <div class="problem-options">
-                        <label class="problem-option">
-                            <input type="radio" name="problem-type" value="technique">
-                            <span class="radio-custom"></span>
-                            <div class="option-content">
-                                <div class="option-icon">⚙️</div>
-                                <span>Problème Technique</span>
-                            </div>
-                        </label>
-                        <label class="problem-option">
-                            <input type="radio" name="problem-type" value="service">
-                            <span class="radio-custom"></span>
-                            <div class="option-content">
-                                <div class="option-icon">👥</div>
-                                <span>Problème de Service</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Problem Categories -->
-                <div class="problem-categories">
-                    <h3>Dans quel domaine ?</h3>
-                    <div class="category-grid">
-                        <div class="category-card">
-                            <div class="category-icon green">📱</div>
-                            <span>Application Mobile</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon green">🌐</div>
-                            <span>Site Web</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon orange">💳</div>
-                            <span>Paiement</span>
-                        </div>
-                        <div class="category-card">
-                            <div class="category-icon red">📞</div>
-                            <span>Support Client</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Problem Description -->
-                <div class="problem-description">
-                    <h3>Décrivez votre Problème (Obligatoire)</h3>
-                    <textarea placeholder="Décrivez en détail le problème que vous avez rencontré..." class="problem-textarea" required></textarea>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="contact-section">
-                    <h3>Avez-vous une remarque ?</h3>
-                    <input type="email" placeholder="Votre email (optionnel)" class="contact-input">
-                </div>
-
-                <button class="submit-btn problem-submit">Signaler le Problème</button>
+            <div class="input-group">
+                <label for="problem-nin">NIN <span class="optional-label">(Optional)</span></label>
+                <input type="text" id="problem-nin" placeholder="National Identification Number" class="contact-input" maxlength="18">
             </div>
+        </div>
+    </div>
+
+    <button class="submit-btn problem-submit">
+        <span class="btn-text">Report Problem</span>
+        <div class="loading-spinner" style="display: none;"></div>
+    </button>
+</div>
+
+<!-- Success Modal -->
+<div id="success-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="success-icon">✅</div>
+        <h3 class="modal-title">Thank You!</h3>
+        <p class="modal-message"></p>
+        <button class="modal-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
         </div>
     </main>
 
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h3 class="modal-title">Merci !</h3>
+            <p class="modal-message"></p>
+            <button class="modal-btn" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">🐑 SheepSouk</div>
-                    <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                        <a href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
-                        <a href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Sales Points</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="#">Citizen Registration</a></li>
-                            <li><a href="#">Solidarity Program</a></li>
-                            <li><a href="#">Complaints</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Contact</h3>
-                        <ul class="contact-info">
-                            <li>
-                                <img src="images/email-icon.png" alt="Email">
-                                <a href="mailto:contact@moutondz.gov.dz">contact@moutondz.gov.dz</a>
-                            </li>
-                            <li>
-                                <img src="images/phone-icon.png" alt="Phone">
-                                <a href="tel:+213123456789">+213 12 345 67 89</a>
-                            </li>
-                        </ul>
-                    </div>
+     <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">🐑 SheepSouk</div>
+                <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 MoutonDZ - All rights reserved</p>
-                <div class="footer-legal">
-                    <a href="#">Terms of Use</a>
-                    <a href="#">Privacy Policy</a>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Sales Points</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Citizen Registration</a></li>
+                        <li><a href="#">Solidarity Program</a></li>
+                        <li><a href="#">Complaints</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <img src="images/email-icon.png" alt="Email">
+                            <a href="mailto:contact@moutondz.gov.dz">contact@moutondz.gov.dz</a>
+                        </li>
+                        <li>
+                            <img src="images/phone-icon.png" alt="Phone">
+                            <a href="tel:+213123456789">+213 12 345 67 89</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+
+        <div class="footer-bottom">
+            <p>© 2025 MoutonDZ - All rights reserved</p>
+            <div class="footer-legal">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script src="feedback.js"></script>
 </body>

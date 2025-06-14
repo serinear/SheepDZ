@@ -1,29 +1,4 @@
-// Solidarity Program JavaScript - Exact React Implementation
-
-function highlightActiveNavItem() {
-    const currentPath = window.location.pathname;
-
-    // Clear all active classes
-    document.querySelectorAll('.navbar nav a').forEach(link => link.classList.remove('active'));
-
-    const registerBtn = document.getElementById('register-btn');
-    const feedbackLink = document.getElementById('feedback-link');
-    const programmeLink = document.getElementById('programme-link');
-    const homeLink = document.getElementById('home-link');
-
-    if (registerBtn) registerBtn.classList.remove('active');
-    
-    // Set active based on current path
-    if (currentPath.includes('register.html') && registerBtn) {
-        registerBtn.classList.add('active');
-    } else if (currentPath.includes('feedback.html') && feedbackLink) {
-        feedbackLink.classList.add('active');
-    } else if (currentPath.includes('programme.html') && programmeLink) {
-        programmeLink.classList.add('active');
-    } else if (currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/')) {
-        if (homeLink) homeLink.classList.add('active');
-    }
-}
+// Solidarity Program JavaScript - Complete Implementation
 
 // Global state
 let currentTab = 'about';
@@ -40,8 +15,67 @@ function initializeApp() {
     setupDonationForm();
     setupProgressAnimation();
     highlightActiveNavItem();
+    setupNavbarInteractions();
     
     console.log('Solidarity Program initialized');
+}
+
+// Navigation Bar Functions
+function highlightActiveNavItem() {
+    const currentPath = window.location.pathname;
+    const currentFile = currentPath.split('/').pop() || 'index.html';
+
+    // Clear all active classes
+    document.querySelectorAll('.navbar nav a').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Set active based on current file
+    const navLinks = {
+        'dashboard.html': 'dashboard',
+        'reservations.html': 'reservations', 
+        'feedback.html': 'feedback',
+        'solidarity-program.html': 'solidarity-program'
+    };
+
+    // Find and activate the correct nav link
+    Object.keys(navLinks).forEach(file => {
+        if (currentFile === file || currentPath.includes(file)) {
+            const linkElement = document.querySelector(`nav a[href="${file}"]`);
+            if (linkElement) {
+                linkElement.classList.add('active');
+            }
+        }
+    });
+
+    // Default to feedback if we're on solidarity-program page
+    if (currentFile === 'solidarity-program.html') {
+        const feedbackLink = document.querySelector('nav a[href="feedback.html"]');
+        if (feedbackLink) {
+            feedbackLink.classList.add('active');
+        }
+    }
+}
+
+function setupNavbarInteractions() {
+    // Handle mobile menu toggle if needed
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        navbar.addEventListener('click', function(e) {
+            // Handle any navbar-specific interactions
+        });
+    }
+
+    // Add hover effects to nav links
+    document.querySelectorAll('.navbar nav a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
 }
 
 // Tab Navigation Functions
@@ -128,10 +162,69 @@ function setupDonationForm() {
     if (donationForm) {
         donationForm.addEventListener('submit', handleDonationSubmit);
     }
+
+    // Setup form input validation
+    setupFormValidation();
+}
+
+function setupFormValidation() {
+    // Email validation
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            validateEmail(this);
+        });
+    }
+
+    // Phone validation
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            // Only allow numbers and basic phone formatting
+            this.value = this.value.replace(/[^0-9+\-\s()]/g, '');
+        });
+    }
+
+    // Amount validation
+    const amountInput = document.getElementById('amount');
+    if (amountInput) {
+        amountInput.addEventListener('input', function() {
+            // Only allow numbers and decimal point
+            this.value = this.value.replace(/[^0-9.]/g, '');
+            
+            // Validate amount
+            const amount = parseFloat(this.value);
+            if (amount > 0) {
+                this.style.borderColor = '#22c55e';
+            } else if (this.value !== '') {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '#e5e7eb';
+            }
+        });
+    }
+}
+
+function validateEmail(emailInput) {
+    const email = emailInput.value.trim();
+    if (email === '') {
+        emailInput.style.borderColor = '#e5e7eb';
+        return true;
+    }
+    
+    if (isValidEmail(email)) {
+        emailInput.style.borderColor = '#22c55e';
+        return true;
+    } else {
+        emailInput.style.borderColor = '#ef4444';
+        return false;
+    }
 }
 
 function updateAmountHelp(donationType) {
-    const amountDescription = document.querySelector('#amount').nextElementSibling;
+    const amountInput = document.getElementById('amount');
+    const amountDescription = amountInput ? amountInput.nextElementSibling : null;
+    
     if (!amountDescription) return;
 
     if (donationType === 'full') {
@@ -144,6 +237,10 @@ function updateAmountHelp(donationType) {
 function handleDonationSubmit(e) {
     e.preventDefault();
     
+    // Show loading state
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    setLoadingState(submitButton, true);
+    
     // Get form data
     const formData = new FormData(e.target);
     const donationData = {
@@ -152,37 +249,41 @@ function handleDonationSubmit(e) {
         name: formData.get('name'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        message: formData.get('message')
+        message: formData.get('message') || ''
     };
 
     // Validate form data
     if (!validateDonationData(donationData)) {
+        setLoadingState(submitButton, false);
         return;
     }
 
     // Process donation
-    processDonation(donationData);
+    processDonation(donationData, submitButton);
 }
 
 function validateDonationData(data) {
-    // Basic validation
+    // Amount validation
     if (!data.amount || parseFloat(data.amount) <= 0) {
-        alert('Veuillez entrer un montant valide.');
+        showAlert('Veuillez entrer un montant valide.', 'error');
         return false;
     }
 
+    // Name validation
     if (!data.name || data.name.trim().length < 2) {
-        alert('Veuillez entrer un nom valide.');
+        showAlert('Veuillez entrer un nom valide.', 'error');
         return false;
     }
 
+    // Email validation
     if (!data.email || !isValidEmail(data.email)) {
-        alert('Veuillez entrer une adresse email valide.');
+        showAlert('Veuillez entrer une adresse email valide.', 'error');
         return false;
     }
 
+    // Phone validation
     if (!data.phone || data.phone.trim().length < 10) {
-        alert('Veuillez entrer un numéro de téléphone valide.');
+        showAlert('Veuillez entrer un numéro de téléphone valide.', 'error');
         return false;
     }
 
@@ -194,12 +295,25 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function processDonation(data) {
-    // Simulate processing delay
+function processDonation(data, submitButton) {
+    // Simulate API call
     setTimeout(() => {
         console.log('Donation submitted:', data);
+        setLoadingState(submitButton, false);
         showDonationSuccess();
-    }, 1000);
+        
+        // Track donation for analytics (if needed)
+        trackDonation(data);
+    }, 2000);
+}
+
+function trackDonation(data) {
+    // This would typically send data to analytics service
+    console.log('Tracking donation:', {
+        amount: data.amount,
+        type: data.donationType,
+        timestamp: new Date().toISOString()
+    });
 }
 
 function showDonationSuccess() {
@@ -211,8 +325,21 @@ function showDonationSuccess() {
         successMessage.classList.remove('hidden');
         donationSuccess = true;
         
-        // Scroll to success message
-        successMessage.scrollIntoView({ behavior: 'smooth' });
+        // Scroll to success message smoothly
+        successMessage.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'center'
+        });
+        
+        // Show success animation
+        setTimeout(() => {
+            successMessage.style.opacity = '0';
+            successMessage.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                successMessage.style.opacity = '1';
+                successMessage.style.transform = 'scale(1)';
+            }, 100);
+        }, 100);
     }
 }
 
@@ -223,6 +350,11 @@ function resetDonationForm() {
     
     if (form) {
         form.reset();
+        
+        // Reset input styles
+        form.querySelectorAll('input, textarea').forEach(input => {
+            input.style.borderColor = '#e5e7eb';
+        });
     }
     
     if (donationFormContainer && successMessage) {
@@ -237,19 +369,38 @@ function resetDonationForm() {
 
 // Progress and Animation Functions
 function setupProgressAnimation() {
-    // Animate progress bar when page loads
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            animateProgressBar();
-        }, 500);
+    // Setup intersection observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('progress')) {
+                    animateProgressBar();
+                } else if (entry.target.querySelector('.text-3xl')) {
+                    animateStatistics();
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe progress bars and statistics
+    document.querySelectorAll('.progress, .bg-white.p-4.rounded-lg').forEach(el => {
+        observer.observe(el);
     });
 }
 
 function animateProgressBar() {
     const progressBar = document.querySelector('.progress-bar');
-    if (progressBar) {
+    if (progressBar && !progressBar.classList.contains('animated')) {
+        progressBar.classList.add('animated');
+        
         // Reset animation
         progressBar.style.width = '0%';
+        progressBar.style.transition = 'width 2s ease-out';
         
         // Animate to target width
         setTimeout(() => {
@@ -259,14 +410,21 @@ function animateProgressBar() {
 }
 
 function animateStatistics() {
-    const statNumbers = document.querySelectorAll('.text-3xl.font-bold.text-green-700');
+    const statContainers = document.querySelectorAll('.bg-white.p-4.rounded-lg');
     
-    statNumbers.forEach((stat, index) => {
-        const finalValue = stat.textContent;
-        const numericValue = parseFloat(finalValue.replace(/[^\d.]/g, ''));
-        
-        if (!isNaN(numericValue)) {
-            animateNumber(stat, 0, numericValue, finalValue);
+    statContainers.forEach((container, index) => {
+        const statNumber = container.querySelector('.text-3xl.font-bold.text-green-700');
+        if (statNumber && !statNumber.classList.contains('animated')) {
+            statNumber.classList.add('animated');
+            
+            const finalValue = statNumber.textContent;
+            const numericValue = parseFloat(finalValue.replace(/[^\d.]/g, ''));
+            
+            if (!isNaN(numericValue)) {
+                setTimeout(() => {
+                    animateNumber(statNumber, 0, numericValue, finalValue);
+                }, index * 200);
+            }
         }
     });
 }
@@ -282,7 +440,7 @@ function animateNumber(element, start, end, suffix) {
         const current = start + (end - start) * easeOutQuart(progress);
         
         if (suffix.includes('M')) {
-            element.textContent = (current / 1000000).toFixed(2) + 'M';
+            element.textContent = (current / 1000).toFixed(2) + 'M';
         } else {
             element.textContent = Math.floor(current).toString();
         }
@@ -301,8 +459,174 @@ function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
 }
 
+// Utility Functions
+function setLoadingState(button, isLoading) {
+    if (!button) return;
+    
+    if (isLoading) {
+        button.disabled = true;
+        button.style.opacity = '0.7';
+        button.style.cursor = 'not-allowed';
+        
+        // Store original text
+        button.dataset.originalText = button.textContent;
+        button.textContent = 'Traitement en cours...';
+        
+        // Add spinner if not exists
+        if (!button.querySelector('.spinner')) {
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner';
+            spinner.innerHTML = '⟳';
+            spinner.style.cssText = `
+                display: inline-block;
+                animation: spin 1s linear infinite;
+                margin-right: 8px;
+            `;
+            button.prepend(spinner);
+        }
+    } else {
+        button.disabled = false;
+        button.style.opacity = '1';
+        button.style.cursor = 'pointer';
+        
+        // Restore original text
+        if (button.dataset.originalText) {
+            button.textContent = button.dataset.originalText;
+        }
+        
+        // Remove spinner
+        const spinner = button.querySelector('.spinner');
+        if (spinner) {
+            spinner.remove();
+        }
+    }
+}
+
+function showAlert(message, type = 'info') {
+    // Remove existing alerts
+    document.querySelectorAll('.custom-alert').forEach(alert => alert.remove());
+    
+    // Create alert element
+    const alert = document.createElement('div');
+    alert.className = `custom-alert alert-${type}`;
+    alert.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        z-index: 1000;
+        max-width: 400px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        animation: slideInRight 0.3s ease-out;
+        cursor: pointer;
+    `;
+    
+    // Set background color based on type
+    const colors = {
+        error: 'linear-gradient(135deg, #ef4444, #dc2626)',
+        warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
+        success: 'linear-gradient(135deg, #10b981, #059669)',
+        info: 'linear-gradient(135deg, #3b82f6, #2563eb)'
+    };
+    
+    alert.style.background = colors[type] || colors.info;
+    alert.textContent = message;
+    
+    // Add close button
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '×';
+    closeBtn.style.cssText = `
+        float: right;
+        margin-left: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        line-height: 1;
+    `;
+    closeBtn.onclick = () => removeAlert(alert);
+    alert.appendChild(closeBtn);
+    
+    document.body.appendChild(alert);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => removeAlert(alert), 5000);
+}
+
+function removeAlert(alert) {
+    if (alert && alert.parentNode) {
+        alert.style.animation = 'slideOutRight 0.3s ease-in';
+        setTimeout(() => alert.remove(), 300);
+    }
+}
+
+// Add required CSS animations
+function addCustomStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .navbar nav a {
+            transition: transform 0.2s ease;
+        }
+        
+        .tab-trigger {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-trigger:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            transition: width 2s ease-out;
+        }
+        
+        .success-message {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize custom styles
+addCustomStyles();
+
 // Export functions for global access
 window.switchTab = switchTab;
 window.resetDonationForm = resetDonationForm;
+window.showAlert = showAlert;
 
-console.log('Solidarity Program JavaScript loaded');
+// Handle page visibility changes
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && currentTab === 'about') {
+        // Re-animate progress bar when page becomes visible
+        setTimeout(animateProgressBar, 500);
+    }
+});
+
+console.log('Solidarity Program JavaScript loaded successfully');
