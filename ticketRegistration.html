@@ -123,8 +123,14 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="submit-btn">Submit</button>
-                <p class="back-link">Back to Main Page</p>
+                <button onclick="showAlertAndRedirect()" type="submit" class="submit-btn">Submit</button>
+                 <script>
+  function showAlertAndRedirect() {
+   
+    window.location.href = "reservationState.html";
+  }
+</script>
+                <p onclick="window.location.href='homeConnected.html'" class="back-link">Back to Main Page</p>
             </form>
         </div>
     </main>
