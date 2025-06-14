@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheepSouk - Register for Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">🐑 <span class="name">SheepSouk</span></div>
+        <nav>
+            <a href="dashboard.html" class="active">State</a>
+            <a href="reservations.html">Home</a>
+            <a href="points-de-vente.html">Feedback</a>
+            <a href="solidarity-program.html">Give a sheep</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="ticketRegistration.html" class="btn-outline">
+                Join the list
+            </a>
+            <a href="logout.html" class="btn-outline">
+                Logout
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h1>Register to join <span class="highlight">the list</span></h1>
+            
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="wilaya">Select Wilaya</label>
+                    <select id="wilaya" name="wilaya">
+                        <option value="">Choose your wilaya</option>
+                        <option value="adrar">01 - Adrar</option>
+                        <option value="chlef">02 - Chlef</option>
+                        <option value="laghouat">03 - Laghouat</option>
+                        <option value="oum-el-bouaghi">04 - Oum El Bouaghi</option>
+                        <option value="batna">05 - Batna</option>
+                        <option value="bejaia">06 - Béjaïa</option>
+                        <option value="biskra">07 - Biskra</option>
+                        <option value="bechar">08 - Béchar</option>
+                        <option value="blida">09 - Blida</option>
+                        <option value="bouira">10 - Bouira</option>
+                        <option value="tamanrasset">11 - Tamanrasset</option>
+                        <option value="tebessa">12 - Tébessa</option>
+                        <option value="tlemcen">13 - Tlemcen</option>
+                        <option value="tiaret">14 - Tiaret</option>
+                        <option value="tizi-ouzou">15 - Tizi Ouzou</option>
+                        <option value="alger">16 - Alger</option>
+                        <option value="djelfa">17 - Djelfa</option>
+                        <option value="jijel">18 - Jijel</option>
+                        <option value="setif">19 - Sétif</option>
+                        <option value="saida">20 - Saïda</option>
+                        <option value="skikda">21 - Skikda</option>
+                        <option value="sidi-bel-abbes">22 - Sidi Bel Abbès</option>
+                        <option value="annaba">23 - Annaba</option>
+                        <option value="guelma">24 - Guelma</option>
+                        <option value="constantine">25 - Constantine</option>
+                        <option value="medea">26 - Médéa</option>
+                        <option value="mostaganem">27 - Mostaganem</option>
+                        <option value="msila">28 - M'Sila</option>
+                        <option value="mascara">29 - Mascara</option>
+                        <option value="ouargla">30 - Ouargla</option>
+                        <option value="oran">31 - Oran</option>
+                        <option value="el-bayadh">32 - El Bayadh</option>
+                        <option value="illizi">33 - Illizi</option>
+                        <option value="bordj-bou-arreridj">34 - Bordj Bou Arréridj</option>
+                        <option value="boumerdes">35 - Boumerdès</option>
+                        <option value="el-tarf">36 - El Tarf</option>
+                        <option value="tindouf">37 - Tindouf</option>
+                        <option value="tissemsilt">38 - Tissemsilt</option>
+                        <option value="el-oued">39 - El Oued</option>
+                        <option value="khenchela">40 - Khenchela</option>
+                        <option value="souk-ahras">41 - Souk Ahras</option>
+                        <option value="tipaza">42 - Tipaza</option>
+                        <option value="mila">43 - Mila</option>
+                        <option value="ain-defla">44 - Aïn Defla</option>
+                        <option value="naama">45 - Naâma</option>
+                        <option value="ain-temouchent">46 - Aïn Témouchent</option>
+                        <option value="ghardaia">47 - Ghardaïa</option>
+                        <option value="relizane">48 - Relizane</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="commune">Inter Commune</label>
+                    <input type="text" id="commune" name="commune" placeholder="Enter your commune">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ninCarte">NIN Carte</label>
+                    <input type="text" id="ninCarte" name="ninCarte" placeholder="Enter your National Identity Number">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="priorityAccess" name="priorityAccess">
+                    <label for="priorityAccess" class="checkbox-label">Prioritized Access requires documents</label>
+                </div>
+                
+                <div class="upload-section" id="uploadSection" style="display: none;">
+                    <h3>Upload Documents</h3>
+                    <div class="upload-area">
+                        <p>Drag files here to upload or browse your computer</p>
+                        <input type="file" id="fileUpload" class="file-input" multiple>
+                        <button type="button" class="browse-btn" onclick="document.getElementById('fileUpload').click()">Browse Files</button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit</button>
+                <p class="back-link">Back to Main Page</p>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">🐑 SheepSouk</div>
+                <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Sales Points</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Citizen Registration</a></li>
+                        <li><a href="#">Solidarity Program</a></li>
+                        <li><a href="#">Complaints</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <img src="images/email-icon.png" alt="Email">
+                            <a href="mailto:contact@moutondz.gov.dz">contact@moutondz.gov.dz</a>
+                        </li>
+                        <li>
+                            <img src="images/phone-icon.png" alt="Phone">
+                            <a href="tel:+213123456789">+213 12 345 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 MoutonDZ - All rights reserved</p>
+            <div class="footer-legal">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="ticketRegistration.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - SheepSouk</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🐑 <span class="name">SheepSouk</span></div>
+        <nav>
+            <a href="index.html" id="home-link">Home</a>
+            <a href="signup.html" id="signup-link">Sign up</a>
+        </nav>
+        <a href="login.html" class="login-btn" id="login-btn">Log in</a>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h1 class="form-title">Connexion au Système</h1>
+                    <p class="form-subtitle">Entrez votre numéro de téléphone et mot de passe</p>
+                </div>
+
+                <form id="loginForm" class="form">
+                    <div class="form-group">
+                        <label for="phone">
+                            <img src="images/phone-icon.png" alt="Phone" class="input-icon">
+                            Numéro de Téléphone
+                        </label>
+                        <input type="tel" id="phone" name="phone" placeholder="ex: 05XXXXXXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <img src="images/lock-icon.png" alt="Lock" class="input-icon">
+                            Mot de Passe
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                        <div class="forgot-password">
+                            <a href="#">Mot de passe oublié?</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Se souvenir de moi</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <img src="images/login-icon.png" alt="Login" class="btn-icon">
+                        Se Connecter
+                    </button>
+                </form>
+
+                <div class="signup-prompt">
+                    <p>Vous n'avez pas de compte? <a href="signup.html">S'inscrire</a></p>
+                </div>
+
+                <div class="back-link">
+                    <a href="index.html">
+                        <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        Retour à la Page Principale
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">🐑 SheepSouk</div>
+                <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Sales Points</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Citizen Registration</a></li>
+                        <li><a href="#">Solidarity Program</a></li>
+                        <li><a href="#">Complaints</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <img src="images/email-icon.png" alt="Email">
+                            <a href="mailto:contact@moutondz.gov.dz">contact@moutondz.gov.dz</a>
+                        </li>
+                        <li>
+                            <img src="images/phone-icon.png" alt="Phone">
+                            <a href="tel:+213123456789">+213 12 345 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 MoutonDZ - All rights reserved</p>
+            <div class="footer-legal">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="login.js"></script>
+</body>
+</html>

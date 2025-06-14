@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme Solidaire - Offrir un Mouton</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="solidarityStyle.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">🐑 <span class="name">SheepSouk</span></div>
+        <nav>
+            <a href="dashboard.html" class="active">State</a>
+            <a href="reservations.html">Home</a>
+            <a href="points-de-vente.html">Feedback</a>
+            <a href="solidarity-program.html">Give a sheep</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="ticketRegistration.html" class="btn-outline">
+                Join the list
+            </a>
+            <a href="logout.html" class="btn-outline">
+                Logout
+            </a>
+        </div>
+    </header>
+    <main>
+    <div class="container mx-auto max-w-6xl py-12 px-4">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-green-800 mb-2">Solidarity Program</h1>
+            <p class="text-gray-600">
+                Participate in our "Offer a Sheep" program to help families in need.
+            </p>
+        </div>
+
+        <div class="tabs w-full">
+            <div class="tabs-list grid w-full grid-cols-1 md:grid-cols-3">
+                <button class="tab-trigger active" data-value="about">About the Program</button>
+                <button class="tab-trigger" data-value="donate">Make a Donation</button>
+                <button class="tab-trigger" data-value="impact">Impact and Testimonials</button>
+            </div>
+
+            <!-- About Tab Content -->
+            <div class="tab-content active space-y-8 pt-6" data-value="about">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-green-800 mb-4">What is the Solidarity Program?</h2>
+                        <p class="text-gray-700 mb-4">
+                            The "Offer a Sheep" Solidarity Program is an initiative that allows any citizen to make a donation
+                            to offer a sheep to a family in need during holiday periods.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            You can choose to fully fund a sheep or contribute partially. Every
+                            contribution counts and helps bring joy to disadvantaged families.
+                        </p>
+                        <p class="text-gray-700">
+                            All beneficiary families are validated by local authorities (APC) or recognized associations
+                            to ensure that aid reaches those who truly need it.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="/images/placeholder.png" alt="Solidarity Program" class="rounded-lg shadow-lg w-full h-auto" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card border-green-100">
+                        <div class="card-header bg-green-50 border-b border-green-100">
+                            <div class="flex justify-center mb-2">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <svg class="h-6 w-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3 class="card-title text-center text-green-800">Make a Donation</h3>
+                        </div>
+                        <div class="card-content pt-6 text-center">
+                            <p class="text-gray-700">
+                                Contribute to offering a sheep to a family in need. You can make a full or
+                                partial donation.
+                            </p>
+                        </div>
+                        <div class="card-footer flex justify-center pb-6">
+                            <button class="btn bg-green-700 hover:bg-green-800 text-white" onclick="switchTab('donate')">
+                                Donate Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card border-green-100">
+                        <div class="card-header bg-green-50 border-b border-green-100">
+                            <div class="flex justify-center mb-2">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <svg class="h-6 w-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3 class="card-title text-center text-green-800">Beneficiary Families</h3>
+                        </div>
+                        <div class="card-content pt-6 text-center">
+                            <p class="text-gray-700">
+                                Beneficiary families are selected and validated by local authorities and
+                                associations.
+                            </p>
+                        </div>
+                        <div class="card-footer flex justify-center pb-6">
+                            <button class="btn border-green-700 text-green-700 hover:bg-green-50">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card border-green-100">
+                        <div class="card-header bg-green-50 border-b border-green-100">
+                            <div class="flex justify-center mb-2">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <svg class="h-6 w-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3 class="card-title text-center text-green-800">Transparency</h3>
+                        </div>
+                        <div class="card-content pt-6 text-center">
+                            <p class="text-gray-700">
+                                Track the impact of your donation. We keep you informed about the family that benefited from your
+                                generosity.
+                            </p>
+                        </div>
+                        <div class="card-footer flex justify-center pb-6">
+                            <button class="btn border-green-700 text-green-700 hover:bg-green-50" onclick="switchTab('impact')">
+                                See the Impact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+                    <h3 class="text-xl font-bold text-green-800 mb-4">Our Goal for 2025</h3>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span>Sheep Donated</span>
+                            <span>250 / 500</span>
+                        </div>
+                        <div class="progress h-2">
+                            <div class="progress-bar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        We aim to offer 500 sheep to families in need this year. Thanks to your generosity, we
+                        have already reached 50% of our goal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Donate Tab Content -->
+            <div class="tab-content space-y-8 pt-6" data-value="donate">
+                <div class="card border-green-100" id="donation-form">
+                    <div class="card-header bg-green-50 border-b border-green-100">
+                        <h2 class="card-title text-2xl text-green-800">Make a Donation</h2>
+                        <p class="card-description text-gray-600">
+                            Fill out the form below to make a donation and offer a sheep to a family in
+                            need.
+                        </p>
+                    </div>
+                    <div class="card-content pt-6">
+                        <form id="donationForm" class="space-y-6">
+                            <div class="form-item space-y-3">
+                                <label class="form-label">Type of Donation</label>
+                                <div class="radio-group flex flex-col space-y-1">
+                                    <div class="radio-item flex items-center space-x-3 space-y-0">
+                                        <input type="radio" id="full" name="donationType" value="full" class="radio-input" checked />
+                                        <label for="full" class="font-normal">Full donation (fund an entire sheep)</label>
+                                    </div>
+                                    <div class="radio-item flex items-center space-x-3 space-y-0">
+                                        <input type="radio" id="partial" name="donationType" value="partial" class="radio-input" />
+                                        <label for="partial" class="font-normal">Partial donation (contribute partially)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-item">
+                                <label for="amount" class="form-label">Donation Amount (DZD)</label>
+                                <input type="number" id="amount" name="amount" class="form-input" placeholder="Enter the amount" required />
+                                <p class="form-description">
+                                    The average price of a sheep is 35,000 DZD.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-item">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required />
+                                </div>
+                                <div class="form-item">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required />
+                                </div>
+                            </div>
+
+                            <div class="form-item">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number" required />
+                            </div>
+
+                            <div class="form-item">
+                                <label for="message" class="form-label">Message (optional)</label>
+                                <textarea id="message" name="message" class="form-input resize-none" rows="3" placeholder="Leave a message for the beneficiary family"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn w-full bg-green-700 hover:bg-green-800 text-white">
+                                Make a Donation
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="success-message hidden" id="success-message">
+                    <div class="card border-green-100">
+                        <div class="card-header bg-green-50 border-b border-green-100 text-center">
+                            <div class="flex justify-center mb-4">
+                                <div class="success-icon">
+                                    <svg class="h-16 w-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h2 class="card-title text-2xl text-green-800">Thank you for your donation!</h2>
+                            <p class="card-description text-gray-600">
+                                Your generosity will make a difference for a family in need.
+                            </p>
+                        </div>
+                        <div class="card-content pt-6 text-center">
+                            <p class="text-lg text-gray-700 mb-4">
+                                We will send you an email with details about the family that benefited from your donation.
+                            </p>
+                            <p class="text-gray-600">
+                                A tax receipt will also be sent to you for your tax declaration.
+                            </p>
+                        </div>
+                        <div class="card-footer flex justify-center gap-4 pt-4">
+                            <button class="btn border-green-700 text-green-700 hover:bg-green-50" onclick="switchTab('about')">
+                                Back to Home
+                            </button>
+                            <button class="btn bg-green-700 hover:bg-green-800 text-white" onclick="resetDonationForm()">
+                                Make Another Donation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Tab Content -->
+            <div class="tab-content space-y-8 pt-6" data-value="impact">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-green-800 mb-4">Our Impact</h2>
+                        <p class="text-gray-700 mb-4">
+                            Thanks to the generosity of our donors, we have been able to offer sheep to hundreds of families
+                            in need throughout Algeria.
+                        </p>
+                        <p class="text-gray-700">
+                            Each donation makes a real difference in the lives of beneficiary families, allowing them to
+                            celebrate holidays with dignity and share moments of joy with their loved ones.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-100 space-y-4">
+                            <h3 class="text-xl font-bold text-green-800">2024 Statistics</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <p class="text-3xl font-bold text-green-700">250</p>
+                                    <p class="text-gray-600">Sheep Donated</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <p class="text-3xl font-bold text-green-700">180</p>
+                                    <p class="text-gray-600">Donors</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <p class="text-3xl font-bold text-green-700">25</p>
+                                    <p class="text-gray-600">Provinces Covered</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg text-center">
+                                    <p class="text-3xl font-bold text-green-700">8.75M</p>
+                                    <p class="text-gray-600">DZD Collected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-green-800">Testimonials</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card border-green-100">
+                        <div class="card-content pt-6">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                    <span class="text-green-800 text-xl font-bold">F.B.</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic text-center mb-4">
+                                "Thanks to this program, my family was able to celebrate Eid with dignity this year. We are very
+                                grateful to the donors for their generosity."
+                            </p>
+                            <p class="text-center text-gray-500">Benali Family, Algiers</p>
+                        </div>
+                    </div>
+
+                    <div class="card border-green-100">
+                        <div class="card-content pt-6">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                    <span class="text-green-800 text-xl font-bold">M.K.</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic text-center mb-4">
+                                "As a widow with three children, this donation was a blessing for us. Thank you from the bottom of our hearts to
+                                all those who contributed."
+                            </p>
+                            <p class="text-center text-gray-500">Mrs. Kadi, Oran</p>
+                        </div>
+                    </div>
+
+                    <div class="card border-green-100">
+                        <div class="card-content pt-6">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                    <span class="text-green-800 text-xl font-bold">A.M.</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic text-center mb-4">
+                                "This program shows the solidarity of our community. We were touched by this initiative
+                                that allowed us to share the joy of Eid."
+                            </p>
+                            <p class="text-center text-gray-500">Mehdaoui Family, Constantine</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn bg-green-700 hover:bg-green-800 text-white" onclick="switchTab('donate')">
+                        Donate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+     </div>
+    </main>
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">🐑 SheepSouk</div>
+                <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Sales Points</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Citizen Registration</a></li>
+                        <li><a href="#">Solidarity Program</a></li>
+                        <li><a href="#">Complaints</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <img src="images/email-icon.png" alt="Email">
+                            <a href="mailto:contact@moutondz.gov.dz">contact@moutondz.gov.dz</a>
+                        </li>
+                        <li>
+                            <img src="images/phone-icon.png" alt="Phone">
+                            <a href="tel:+213123456789">+213 12 345 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 MoutonDZ - All rights reserved</p>
+            <div class="footer-legal">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="solidarity.js"></script>
+</body>
+</html>
