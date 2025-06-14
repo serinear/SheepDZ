@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SheepSouk</title>
+  <link rel="stylesheet" href="waitingList.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+ <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <img class="logopic" src="images/logoo.png">
+             <span class="name">sheepSoug</span></div>
+        <nav>
+            <a href="reservationState.html" class="active">State</a>
+            <a href="mainPage.html">Home</a>
+            <a href="points-de-vente.html">Feedback</a>
+            <a href="aide.html">Give a sheep</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="get-ticket.html" class="btn-outline">
+                Join the list
+            </a>
+            <a href="logout.html" class="btn-outline">
+                Logout
+            </a>
+        </div>
+    </header>
+
+  <section class="hero">
+   
+   <div class="hero-overlay">
+   <!-- <button class="test" onclick="window.location.href='reservationState.html'"> ← confirmed reservation case</button>-->
+      <h1>
+        Your appointment <span class="green"> Reservation</span> <br />
+        <span class="eid">is Pending </span>
+      </h1>
+     <p>You're on the waiting list. We'll notify you when it's your turn to select your sheep.</p>
+
+      <div class="buttons">
+        <button  id="showAppointmentBtn" class="get-ticket">More information</button>
+        
+      </div>
+    </div>
+
+ </section>
+
+<div id="appointmentCard" class="appointment-card" >
+  <div class="appointment-header">
+    <h1>Your name is now on the waiting list </h1>
+    
+  </div>
+  <div class="title">
+    <h2>Waiting List</h2>
+      <p>You are on the priority waiting list</p>
+  </div>
+  <div class="appointment-body">
+    <div class="time-remaining">
+      <span class="label">Main List Closed</span>
+      <span class="value">The main list is now closed. You have been added to the priority waiting list.</span>
+    </div>
+    <div class="detailConrainer">
+    <div class="detail-row">
+      <span class="label">SMS Notification</span>
+      <span class="value">You will receive an SMS notification when a slot becomes available.<br></span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Appointment</span>
+      <span class="value">Once you receive the confirmation SMS, check your appointment.</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Position: 42</span>
+      <span class="value">Your position in the waiting list.<br><br></span>
+    </div>
+    </div>
+
+
+<div class="time-remaining2">
+      <h1>What happens after receiving the SMS ?</h1>
+      <!-- Step 1 -->
+      <div class="process-card1">
+        <div class="step-number1">1</div>
+     
+        <p>You will receive an SMS notification when a slot becomes available.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-card1">
+        <div class="step-number1">2</div>
+       
+        <p>After receiving the SMS, you can log into your profile to view your appointment details.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-card1">
+        <div class="step-number1">3</div>
+        
+        <p>After checking your appointment, be on time and pick a sheep for your celebration!</p>
+      </div>
+    </div>
+
+
+    <div class="important-note">
+      <span class="label">Important</span>
+      <p>Make sure your phone is available to receive SMS notifications.</p>
+    </div>
+  </div>
+</div>
+ 
+<div class="donation-card">
+        <img class="donationImg" src="images/donarionn.jpg"> 
+        <div class="donationDetails">
+      <h3>Solidarity Initiative</h3>
+      <p>Participate in our "Give a Sheep" program to help families in need. Make a partial or full donation to a family approved by local authorities.</p>
+      <button class="donate-btn">Make a donation</button></div>
+    </div>
+  </div>
+
+
+
+<script src="waitingList.js"></script>
+</body>
+ 
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SheepSouk</title>
+  <link rel="stylesheet" href="reservationState.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+ <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <img class="logopic" src="images/logoo.png">
+             <span class="name">sheepSoug</span></div>
+        <nav>
+            <a href="reservationState.html" class="active">State</a>
+            <a href="mainPage.html">Home</a>
+            <a href="points-de-vente.html">Feedback</a>
+            <a href="aide.html">Give a sheep</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="get-ticket.html" class="btn-outline">
+                Join the list
+            </a>
+            <a href="logout.html" class="btn-outline">
+                Logout
+            </a>
+        </div>
+    </header>
+
+  <section class="hero">
+   
+   <div class="hero-overlay">
+    <!--<button class="test" onclick="window.location.href='waitingList.html'">  Waitlist case  →</button>-->
+      <h1>
+         Your appointment <span class="green"> Reservation</span> <br />
+        <span class="eid">is Confirmed !</span>
+      </h1>
+     <p>Get ready for your appointment, here are the details you need.</p>
+
+      <div class="buttons">
+        <button id="showAppointmentBtn" class="get-ticket">See my appointment</button>
+        
+      </div>
+    </div>
+
+ </section>
+
+<div id="appointmentCard" class="appointment-card" >
+  <div class="appointment-header">
+    <h1>You're officially on the main list !</h1>
+    <img src="images/confirm.png">
+  </div>
+  <div class="title">
+    <h2>Appointment Details</h2>
+      <p>Your reservation is confirmed and secured</p>
+  </div>
+  <div class="appointment-body">
+    <div class="time-remaining">
+      <span class="label">Time remaining until appointment</span>
+      <span class="value">22d 4h 9m 10s</span>
+    </div>
+    <div class="detailConrainer">
+    <div class="detail-row">
+      <span class="label">Pickup Location</span>
+      <span class="value">Algiers - Bab El Oued</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Date</span>
+      <span class="value">July 5, 2025</span>
+    </div>
+    
+    <div class="detail-row">
+      <span class="label">Time</span>
+      <span class="value">10:00 AM</span>
+    </div>
+    </div>
+    <div class="important-note">
+      <span class="label">Important</span>
+      <p>Please arrive on time. Bring your ID card and ticket number.</p>
+    </div>
+  </div>
+</div>
+ 
+<div class="donation-card">
+        <img class="donationImg" src="images/donarionn.jpg"> 
+        <div class="donationDetails">
+      <h3>Solidarity Initiative</h3>
+      <p>Participate in our "Give a Sheep" program to help families in need. Make a partial or full donation to a family approved by local authorities.</p>
+      <button class="donate-btn">Make a donation</button></div>
+    </div>
+  </div>
+
+<script src="reservationState.js"></script>
+</body>
+ 
+</html>
