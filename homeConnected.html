@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SheepSouk</title>
-  <link rel="stylesheet" href="reservationState.css" />
+  <link rel="stylesheet" href="homeConnected.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -16,14 +16,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
- <!-- Navigation Bar -->
+   <!-- Navigation Bar -->
     <header class="navbar">
         <div class="logo">
             <img class="logopic" src="images/logoo.png">
              <span class="name">sheepSoug</span></div>
         <nav>
-            <a href="reservationState.html" class="active">State</a>
-            <a href="homeConnected.html">Home</a>
+            <a href="reservationState.html" >State</a>
+            <a href="homeConnected.html" class="active">Home</a>
             <a href="feedback.html">Feedback</a>
             <a href="solidarity-program.html">Give a sheep</a>
         </nav>
@@ -38,71 +38,133 @@
     </header>
 
   <section class="hero">
-   
-   <div class="hero-overlay">
-    <button class="test" onclick="window.location.href='waitingList.html'">  Waitlist case  →</button>
+    <div class="hero-overlay">
       <h1>
-         Your appointment <span class="green"> Reservation</span> <br />
-        <span class="eid">is Confirmed !</span>
+        Secure<br />
+        Your <span class="green">Sheep</span> for<br />
+        <span class="eid">Eid al-Adha</span>
       </h1>
-     <p>Get ready for your appointment, here are the details you need.</p>
+      <p>Skip the chaos. Book your turn to buy your Eid sheep in person.</p>
+      <p class="slogan">Our mission? <strong>Ga3 n3aydou</strong> - because Eid should be for everyone.</p>
 
       <div class="buttons">
-        <button id="showAppointmentBtn" class="get-ticket">See my appointment</button>
-        
+        <button onclick="window.location.href='ticketRegistration.html'" class="get-ticket">Join the list</button>
+        <button class="learn-more">See our process</button>
+      </div>
+    </div>
+  </section>
+ 
+<div class="objectives animated-section" id="objectives">
+    <div class="OurObjectives">Our Objectives</div>
+    <h2>Application Goals</h2>
+    <p class="subtitle">Our system aims to revolutionize sheep reservations for Eid al-Adha with<br><span class="subsubtitle" >transparency and fairness.</span></p>
+
+    <div class="cards-container">
+      <div class="card1">
+        <h3>Fair Distribution</h3>
+        <p>Limit each person to purchasing only one sheep to ensure equitable distribution.</p>
+      </div>
+
+      <div class="card2">
+        <h3>Priority for the Needy</h3>
+        <p>Give priority to underprivileged individuals before closing the main list </p>
+      </div>
+
+      <div class="card3">
+        <h3>Reduced Waiting Time</h3>
+        <p>Optimize the reservation process with a real-time reservation system.</p>
+      </div>
+    </div>
+</div>
+<div class="objectives2 animated-section" id="user-guide">
+    <div class="UserGuide">User Guide</div>
+
+    <h2>How to use the Application</h2>
+    <p class="subtitle">> Follow these simple steps to reserve your sheep easily and securely</p>
+    
+<div class="process-steps">
+      
+      <!-- Step 1 -->
+      <div class="process-card1">
+        <div class="step-number1">1</div>
+        <h3>Reserve Your Spot </h3>
+        <p>Click "Join the list" to begin your reservation process.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-card2">
+        <div class="step-number2">2</div>
+        <h3>Complete the Form</h3>
+        <p>Enter your personal details and select priority option if applicable.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-card1">
+        <div class="step-number1">3</div>
+        <h3>Get Your appointment</h3>
+        <p>You will receive your appointment details by SMS, and you can always access them on your account.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-card2">
+        <div class="step-number2">4</div>
+        <h3>Visit the Market</h3>
+        <p>Come to the location on time, show your ID card , and choose your sheep with no time wasted.</p>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="process-card1">
+        <div class="step-number1">5</div>
+        <h3>Waitlist Option</h3>
+        <p>If the main list is closed, you can join the waitlist. You'll be notified by SMS if a spot becomes available.</p>
       </div>
     </div>
 
- </section>
 
-<div id="appointmentCard" class="appointment-card" >
-  <div class="appointment-header">
-    <h1>You're officially on the main list !</h1>
-    <img src="images/confirm.png">
-  </div>
-  <div class="title">
-    <h2>Appointment Details</h2>
-      <p>Your reservation is confirmed and secured</p>
-  </div>
-  <div class="appointment-body">
-    <div class="time-remaining">
-      <span class="label">Time remaining until appointment</span>
-      <span class="value">22d 4h 9m 10s</span>
-    </div>
-    <div class="detailConrainer">
-    <div class="detail-row">
-      <span class="label">Pickup Location</span>
-      <span class="value">Algiers - Bab El Oued</span>
-    </div>
-    
-    <div class="detail-row">
-      <span class="label">Date</span>
-      <span class="value">July 5, 2025</span>
-    </div>
-    
-    <div class="detail-row">
-      <span class="label">Time</span>
-      <span class="value">10:00 AM</span>
-    </div>
-    </div>
-    <div class="important-note">
-      <span class="label">Important</span>
-      <p>Please arrive on time. Bring your ID card and ticket number.</p>
-    </div>
-  </div>
+
+
 </div>
- 
-<div class="donation-card">
+
+
+<section class="reservation-section">
+    <div class="reservation-container">
+    <div class="ticket-card">
+     <div class="UserGuide2">Reservation Available !</div>
+  <div class="reservation-header">
+
+    <h2>Reserve your sheep</h2>
+    <p class="subtitle">Limited availability !</p>
+  </div>
+
+  
+      <button onclick="window.location.href='ticketRegistration.html'"  class="get-ticket">Join the List</button>
+    </div>
+
+    <div class="donation-card">
         <img class="donationImg" src="images/donarionn.jpg"> 
         <div class="donationDetails">
       <h3>Solidarity Initiative</h3>
       <p>Participate in our "Give a Sheep" program to help families in need. Make a partial or full donation to a family approved by local authorities.</p>
-      <button  onclick="window.location.href='solidarity-program.html'" class="donate-btn">Make a donation</button></div>
+      <button onclick="window.location.href='solidarity-program.html'" class="donate-btn">Make a donation</button></div>
     </div>
   </div>
+</section>
+    
 
 
-  <!-- Footer -->
+<!--<section class="cta-section">
+  <div class="cta-container">
+    <h2>Ready to Register?</h2>
+    <p class="cta-subtitle">Be part of the community making Eid simpler. Join our fair sheep distribution system.</p>
+    
+    <div class="cta-buttons">
+      <button  onclick="window.location.href='signup.html'" class="cta-primary">Register as Citizen</button>
+      <button onclick="window.location.href='login.html'" class="cta-secondary">Login</button>
+    </div>
+  </div>
+</section>-->
+
+ <!-- Footer -->
      <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -164,10 +226,7 @@
     </div>
 </footer>
 
-
-
-
-<script src="reservationState.js"></script>
+<script src="homeConnected.js"></script>
 </body>
  
 </html>

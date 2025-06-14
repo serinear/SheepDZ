@@ -23,4 +23,22 @@
       appointmentCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  
+  navLinks.forEach(link => {
+    // Correspondance exacte ou partielle selon votre structure URL
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+    
+    // Optionnel : gestion manuelle du clic (pour SPA)
+    link.addEventListener('click', function(e) {
+      if (!this.href.includes('#')) { // Exclure les ancres
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+});

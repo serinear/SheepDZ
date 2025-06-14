@@ -12,57 +12,60 @@
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">🐑 <span class="name">SheepSouk</span></div>
+        <div class="logo"><img class="logoPic" src="images/logoo.png"> <span class="name">sheepSoug</span></div>
         <nav>
-            <a href="index.html" id="home-link">Home</a>
+            <a href="mainPage.html" id="home-link">Home</a>
             <a href="signup.html" id="signup-link">Sign up</a>
         </nav>
         <a href="login.html" class="login-btn" id="login-btn">Log in</a>
     </header>
 
-    <main class="main">
+   <main class="main">
         <div class="container">
             <div class="form-card">
-                <div class="form-header">
-                    <h1 class="form-title">Inscription au Système</h1>
-                    <p class="form-subtitle">Entrez votre numéro de téléphone et mot de passe</p>
-                </div>
+                <h1 class="form-title">System Registration</h1>
 
                 <form id="signupForm" class="form">
                     <div class="form-group">
                         <label for="phone">
                             <img src="images/phone-icon.png" alt="Phone" class="input-icon">
-                            Numéro de Téléphone
+                            Phone Number
                         </label>
                         <input type="tel" id="phone" name="phone" placeholder="ex: 05XXXXXXXX" required>
-                        <div class="info-message success">
+                        <div class="info-message warning">
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="16" x2="12" y2="12"></line>
                                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
                             </svg>
-                            Vous recevrez des notifications SMS concernant votre réservation
+                            You will receive SMS notifications regarding your booking
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password">
                             <img src="images/lock-icon.png" alt="Lock" class="input-icon">
-                            Mot de Passe
+                            Password
                         </label>
-                        <input type="password" id="password" name="password" placeholder="Entrez un mot de passe" required>
+                        <input type="password" id="password" name="password" placeholder="Enter a password" required>
                         <div class="info-message warning">
                             <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
                                 <line x1="12" y1="9" x2="12" y2="13"></line>
                                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
                             </svg>
-                            Utilisez pour accéder aux détails de votre réservation plus tard
+                            Use it to access your booking details later
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Continuer
+                    <button onclick="showAlertAndRedirect()" type="submit" class="btn btn-primary btn-block">
+                        <script>
+  function showAlertAndRedirect() {
+    alert("You've been signed up succesfully !");
+    window.location.href = "homeConnected.html";
+  }
+</script>
+                        Continue
                         <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14"></path>
                             <path d="m12 5 7 7-7 7"></path>
@@ -71,12 +74,12 @@
                 </form>
 
                 <div class="back-link">
-                    <a href="index.html">
+                    <a href="mainPage.html">
                         <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        Retour à la Page Principale
+                        Back to Home Page
                     </a>
                 </div>
             </div>
@@ -86,7 +89,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo">🐑 SheepSouk</div>
+                <div class="logo"><img class="logoPic" src="images/logoo.png" > sheepSoug</div>
                 <p>National platform for simplified and fair purchase of imported Romanian sheep.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>

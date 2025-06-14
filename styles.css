@@ -1,9 +1,3 @@
-/* 
-   SheepSouk - Main Stylesheet
-   Contains all styles for the sheep distribution platform
-*/
-
-/* ===== FONTS & RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -164,8 +158,7 @@ img {
     margin: 0 auto;
     width: 100%;
     border: 1px solid #e0e0e0;
-    /* Darker green border */
-    border-color: #006400;
+
 }
 
 /* New green header for form */
@@ -178,13 +171,15 @@ img {
 }
 
 .form-title {
-    color: white;
-    margin-bottom: 10px;
-    font-size: 1.8rem;
     font-family: 'Manrope', sans-serif;
-    font-weight: 800;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0px;
+    color: #333;
+    padding: 50px 10px;
 }
-
+    
 .form-subtitle {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 0;
@@ -223,17 +218,25 @@ img {
 }
 
 .form-group input {
+    width: 100%;
     padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s;
+    border: 2px solid #d4edda;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #e8f5e8;
+    color: #333;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .form-group input:focus {
-    outline: none;
-    border-color: #006400; /* Darker green */
+        outline: none;
+    border-color: #4CAF50;
+    background-color: #e8f5e8;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    transform: translateY(-1px);
 }
 
 .info-message {
@@ -536,4 +539,10 @@ img {
     .footer-links {
         grid-template-columns: 1fr;
     }
+}.logoPic{
+    width: 30px;
+}
+.navbar nav a.active {
+  color: #3ad400;
+  font-weight: 600;
 }

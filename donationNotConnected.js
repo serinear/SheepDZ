@@ -630,5 +630,3 @@ document.addEventListener('visibilitychange', function() {
 });
 
 console.log('Solidarity Program JavaScript loaded successfully');
-
-

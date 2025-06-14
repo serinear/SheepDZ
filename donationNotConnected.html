@@ -7,27 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="solidarityStyle.css">
+    <link rel="stylesheet" href="donationNotConnected.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <header class="navbar">
-        <div class="logo"><img class="logoPic" src="images/logoo.png"> <span class="name">sheepSoug</span></div>
-        <nav>
-            <a href="reservationState.html">State</a>
-            <a href="homeConnected.html">Home</a>
-            <a href="feedback.html">Feedback</a>
-            <a href="solidarity-program.html" class="active">Give a sheep</a>
-        </nav>
-        <div class="auth-buttons">
-            <a href="ticketRegistration.html" class="btn-outline">
-                Join the list
-            </a>
-            <a href="mainPage.html" class="btn-outline">
-                Logout
-            </a>
-        </div>
-    </header>
+    <div class="logo">
+        <img class="logoPic" src="images/logoo.png">
+         <span class="name">sheepSoug</span></div>
+    <nav>
+      <a href="mainPage.html">Home</a>
+      <a href="signup.html">Sign up</a>
+    </nav>
+    <button class="login-btn" onclick="window.location.href='login.html'"  >Log in</button>
+  </header>
     <main>
     <div class="container mx-auto max-w-6xl py-12 px-4">
         <div class="mb-8">
@@ -413,6 +405,6 @@
     </div>
 </footer>
 
-    <script src="solidarity.js"></script>
+    <script src="donationNotConnected.js"></script>
 </body>
 </html>
